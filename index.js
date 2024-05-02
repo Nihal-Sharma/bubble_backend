@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const mongoose = require("mongoose");
 
+const serviceModel = require('./Models/Service')
 const loginModel = require("./Models/Login")
 
 const app = express()
@@ -28,6 +29,11 @@ app.post("/signup" , (req,res)=>{
     loginModel.create(
      req.body
     ).then((result)=>{res.send(result)})
+})
+
+app.post("/bookservice",  (req ,res)=>{
+  serviceModel.create(req.body).then((result)=>{res.send(result)})
+  
 })
 
 
