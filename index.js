@@ -16,7 +16,7 @@ mongoose.connect(mongodb_uri).then(()=>{
 })
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('<h1>Hello world</h1>')
 })
 
 app.post("/login" , (req,res)=>{
@@ -33,7 +33,12 @@ app.post("/signup" , (req,res)=>{
 
 app.post("/bookservice",  (req ,res)=>{
   serviceModel.create(req.body).then((result)=>{res.send(result)})
+  console.log(req.body)
   
+})
+app.post('/viewreq'  ,(req ,res)=>{
+  
+  serviceModel.find(req.body).then((result)=>{res.send(result)})
 })
 
 
